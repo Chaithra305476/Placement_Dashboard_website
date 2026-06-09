@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/company/post_job">Post Job Drive</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h2>Welcome, {{ name }}! 🏢</h2>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>0</h3>
+                <p>Jobs Posted</p>
+            </div>
+            <div class="stat-card">
+                <h3>0</h3>
+                <p>Total Applications</p>
+            </div>
+            <div class="stat-card">
+                <h3>0</h3>
+                <p>Students Hired</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">Your Job Drives</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Date</th>
+                    <th>CGPA Cutoff</th>
+                    <th>Applications</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" style="text-align:center; color:#999;">
+                        No job drives posted yet
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a href="/company/post_job" class="btn">+ Post New Job Drive</a>
+    </div>
+
+</body>
+</html>

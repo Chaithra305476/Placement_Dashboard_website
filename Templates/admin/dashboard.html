@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/admin/reports">Reports</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h2>Admin Dashboard 🛠️</h2>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>{{ total_students }}</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ total_companies }}</h3>
+                <p>Total Companies</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ total_placed }}</h3>
+                <p>Students Placed</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ total_drives }}</h3>
+                <p>Job Drives</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">All Students</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Branch</th>
+                    <th>CGPA</th>
+                    <th>Skills</th>
+                    <th>Placed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.branch }}</td>
+                    <td>{{ student.cgpa }}</td>
+                    <td>{{ student.skills }}</td>
+                    <td>{{ '✅' if student.placed else '❌' }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; color:#999;">
+                        No students registered yet
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">All Companies</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Industry</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies %}
+                <tr>
+                    <td>{{ company.name }}</td>
+                    <td>{{ company.email }}</td>
+                    <td>{{ company.industry }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" style="text-align:center; color:#999;">
+                        No companies registered yet
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

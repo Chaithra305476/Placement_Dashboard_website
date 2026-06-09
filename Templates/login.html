@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>Login</h2>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <p class="form-footer">Don't have an account? <a href="/register">Register here</a></p>
+    </div>
+
+    <script>
+        // Clear fields on page load to prevent autofill
+        window.onload = function() {
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+
+</body>
+</html>

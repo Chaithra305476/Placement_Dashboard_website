@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Cell</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h2>Welcome to the Placement Dashboard</h2>
+        <p>Students, Companies and Admin can manage placements from one place.</p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn">Get Started</a>
+            <a href="/login" class="btn-outline">Login</a>
+        </div>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>👨‍🎓 Students</h3>
+            <p>Register, update your profile and apply for job drives.</p>
+        </div>
+        <div class="card">
+            <h3>🏢 Companies</h3>
+            <p>Post job drives and view eligible students.</p>
+        </div>
+        <div class="card">
+            <h3>🛠️ Admin</h3>
+            <p>Manage placements, generate reports and export data.</p>
+        </div>
+    </div>
+
+</body>
+</html>
