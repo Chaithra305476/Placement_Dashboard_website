@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Job Drive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/company/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>Post a Job Drive</h2>
+
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+                <label>Job Role</label>
+                <input type="text" name="role" placeholder="e.g. Software Engineer" required>
+            </div>
+            <div class="form-group">
+                <label>Drive Date</label>
+                <input type="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label>Minimum CGPA Required</label>
+                <input type="number" name="cgpa_cutoff" step="0.01" min="0" max="10" placeholder="e.g. 7.5" required>
+            </div>
+            <button type="submit" class="btn">Post Job Drive</button>
+        </form>
+
+        <p class="form-footer"><a href="/company/dashboard">← Back to Dashboard</a></p>
+    </div>
+
+</body>
+</html>

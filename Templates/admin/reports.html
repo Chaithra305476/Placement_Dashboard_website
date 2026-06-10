@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🎓 Placement Cell</h1>
+        <div>
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h2>Placement Reports 📊</h2>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>{{ total_students }}</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ total_placed }}</h3>
+                <p>Placed</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ total_unplaced }}</h3>
+                <p>Unplaced</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ placement_rate }}%</h3>
+                <p>Placement Rate</p>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">Branch Wise Report</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Branch</th>
+                    <th>Total Students</th>
+                    <th>Placed</th>
+                    <th>Unplaced</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in branch_report %}
+                <tr>
+                    <td>{{ row.branch }}</td>
+                    <td>{{ row.total }}</td>
+                    <td>{{ row.placed }}</td>
+                    <td>{{ row.unplaced }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="text-align:center; color:#999;">
+                        No data available yet
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">All Job Drives</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Date</th>
+                    <th>CGPA Cutoff</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for drive in drives %}
+                <tr>
+                    <td>{{ drive.company_name }}</td>
+                    <td>{{ drive.role }}</td>
+                    <td>{{ drive.date }}</td>
+                    <td>{{ drive.cgpa_cutoff }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="text-align:center; color:#999;">
+                        No job drives yet
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <a href="/admin/export" class="btn">⬇️ Export to CSV</a>
+    </div>
+
+</body>
+</html>
